@@ -2688,6 +2688,12 @@ void lua_engine::initialize()
 			machine().video().save_snapshot(&sdev, file);
 			return sol::make_object(sol(), sol::nil);
 		});
+	screen_dev_type.set("bitmap_binary", [this](screen_device &sdev) {
+      return machine().video().get_bitmap_binary(&sdev);
+    });
+	screen_dev_type.set("bitmap_format", [this](screen_device &sdev) {
+      return machine().video().get_bitmap_format(&sdev);
+    });
 	screen_dev_type.set("type", [](screen_device &sdev) {
 			switch (sdev.screen_type())
 			{

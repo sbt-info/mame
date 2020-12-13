@@ -17,6 +17,7 @@
 #ifndef MAME_EMU_VIDEO_H
 #define MAME_EMU_VIDEO_H
 
+#include "bitmap.h"
 #include "recording.h"
 
 
@@ -74,6 +75,10 @@ public:
 	std::string speed_text();
 	double speed_percent() const { return m_speed_percent; }
 	int effective_frameskip() const;
+
+	// bitmaps
+	std::string get_bitmap_binary(screen_device *screen);
+	std::string get_bitmap_format(screen_device *screen);
 
 	// snapshots
 	void save_snapshot(screen_device *screen, emu_file &file);
